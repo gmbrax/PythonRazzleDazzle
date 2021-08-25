@@ -148,18 +148,6 @@ class Turn():
         self.__FlagResultadoTurno = None
 
 
-    def obterNumeroTurno(self):
-        return self.__NumeroTurno
-    
-    def definirNumeroTurno(self,Numero):
-        self.__NumeroTurno = Numero
-
-    def obterNumeroTurnoSemPremio(self):
-        return self.__NumeroTurnosSemPremio
-
-    def definirNumeroTurnoSemPremio(self,turno):
-        self.__NumeroTurnosSemPremio += turno
-
     def obterPosicoesBolasJogadas(self):
         return self.__PosiçoesBolasJogadas
     
@@ -244,20 +232,15 @@ class Turn():
             self.definirFlagResultadoTurno(FlagResultado)
             print("Flag:" +str(self.obterFlagResultadoTurno()))
 
-        def incrementarTurno(self):
-             self.definirNumeroTurno(1)
-             print(type(self.obterFlagResultadoTurno()))
-             if self.obterFlagResultadoTurno() == 0:
-                 self.definirNumeroTurnoSemPremio(1)
-             print("Turno: " + str(self.obterNumeroTurno()))
-             print("Turno Sem Premio:" + str(self.obterNumeroTurnoSemPremio()))
+
 
         jogarBolas(self)
         obterValoresBolas(self)
         somarValoresBolas(self)
         checarSomaValoresBolas(self)
-        incrementarTurno(self)
 
+
+    
 
 def createfile():
     print("Criando Relatorio")
