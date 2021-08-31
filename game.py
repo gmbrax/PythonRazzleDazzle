@@ -81,20 +81,28 @@ class game():
 
         elif flagResultadoTurno is 1:
             self.definirScore(5)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 2:
             self.definirScore(10)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 4:
             self.definirScore(15)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 8:
             self.definirScore(20)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 16:
             self.definirScore(30)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 32:
             self.definirScore(50)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 64:
             self.definirScore(100)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 128:
             self.definirPrize(1)
+            self.definirNumeroTurnoSemPremio(0)
         elif flagResultadoTurno is 256:
             self.definirPrize(1)
             self.definirCostTurn()
