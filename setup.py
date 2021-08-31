@@ -60,44 +60,43 @@ class score_card():
     def checarSomaDePontos(self,somatoria):
         
         if somatoria in self.pts5Set:
-            print("Mais 5 pontos")
+            
             return self.flag5pts
         
         elif somatoria in self.pts10Set:
-            print("Mais 10 pontos")
+            
             return self.flag10pts
 
         elif somatoria in self.pts15Set:
-            print("Mais 15 pontos")
+            
             return self.flag15pts
 
         elif somatoria in self.pts20Set:
-            print("Mais 20 pontos")
+            
             return self.flag20pts
 
         elif somatoria in self.pts30Set:
-            print("Mais 30 pontos")
+            
             return self.flag30pts    
 
         elif somatoria in self.pts50Set:
-            print("Mais 50 pontos")
+            
             return self.flag50pts
         
         elif somatoria in self.pts100Set:
-            print("Mais 100 pontos")
-            print("Cagão ganhou....")
+            
             return self.flag100pts 
 
         elif somatoria in self.prizeSet:
-            print("Mais um \"premio\"")
+            
             return self.flagprize
 
         elif somatoria in self.NullSet:
-            print("AGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            
             return self.flagNull
 
         elif somatoria in self.DoubleMoneySet:
-            print("VAI PAGAR DOBRADO MANÉ MAIS GANHOU MAIS UM \"PREMIO\" ")
+            
             return self.flagdouble
         
         else:
@@ -211,26 +210,22 @@ class Turn():
             for x in range(0,8):
                 Bola = [randint(0,int(self.__gameTable.obterNumeroColunasMatriz())),randint(0,self.__gameTable.obterNumeroLinhasMatriz())]
                 self.definirPosicoesBolasJogadas(Bola)
-                #print(Bola)
-            print(self.obterPosicoesBolasJogadas())
+                
 
         def obterValoresBolas(self):
             for x in range(0,len(self.__PosiçoesBolasJogadas)):
                 posicao = self.__gameTable.obter_valor(self.__PosiçoesBolasJogadas[x][0],self.__PosiçoesBolasJogadas[x][1])
                 self.__ValoresBolasJogadas.append(posicao)
-            print(self.obterValoresBolasJogadas())
 
         def somarValoresBolas(self):
             somatorio = 0
             for x in range(0,len(self.__ValoresBolasJogadas)):
                 somatorio += self.obterItemValorBolaJogada(x)
             self.definirSomatoriaValoresBolasJogadas(somatorio)
-            print(self.obterSomatoriaValoresBolasJogadas())
 
         def checarSomaValoresBolas(self):
             FlagResultado = self.__scoreCard.checarSomaDePontos(self.obterSomatoriaValoresBolasJogadas())
             self.definirFlagResultadoTurno(FlagResultado)
-            print("Flag:" +str(self.obterFlagResultadoTurno()))
 
 
 

@@ -50,8 +50,8 @@ class game():
     def obterCostTurn(self):
         return self.__cost_turn 
 
-    def definirCostTurn(self,cost):
-        self.__cost_turn += cost
+    def definirCostTurn(self):
+        self.__cost_turn = (self.__cost_turn *2)
 
     def obterMoneySpent(self):
         return self.__money_spent
@@ -73,8 +73,48 @@ class game():
        
         
     
+        
+        
+    def atualizarVariaveisJogo(self,flagResultadoTurno):
+        if flagResultadoTurno is 0:
+            self.incrementarTurnoSemPremio(1)
+
+        elif flagResultadoTurno is 1:
+            self.definirScore(5)
+        elif flagResultadoTurno is 2:
+            self.definirScore(10)
+        elif flagResultadoTurno is 4:
+            self.definirScore(15)
+        elif flagResultadoTurno is 8:
+            self.definirScore(20)
+        elif flagResultadoTurno is 16:
+            self.definirScore(30)
+        elif flagResultadoTurno is 32:
+            self.definirScore(50)
+        elif flagResultadoTurno is 64:
+            self.definirScore(100)
+        elif flagResultadoTurno is 128:
+            self.definirPrize(1)
+        elif flagResultadoTurno is 256:
+            self.definirPrize(1)
+            self.definirCostTurn()
+        else:
+            exit(-99)
+
+    def TurnPrint(self,turn):
+        print("------------------------------------------------------------------------------------------------------")
         print("Turno: " + str(self.obterNumeroTurno()))
-        print("Turno sem premio: " + str(self.obterNumeroTurnoSemPremio()))
+        print("Turnos sem premio: " + str(self.obterNumeroTurnoSemPremio()))
+        print("Valor Gasto: " +  "US$ " + str(self.obterMoneySpent()))
+        print("Valor da Aposta: " + "US$ " + str(self.obterCostTurn()))
+        print("Posições das Bolas:" + str(turn.obterPosicoesBolasJogadas()) )
+        print("Valor das Bolas Jogadas" + str(turn.obterValoresBolasJogadas()))
+        print("Somatoria das Bolas Jogadas: " + str(turn.obterSomatoriaValoresBolasJogadas()))
+        print("Flag Resultado: " + str(turn.obterFlagResultadoTurno()))
+        print("Score: " + str(self.obterScore()))
+        print("Premios Acumulados:" + str(self.obterPrize()))
+        
+
         
 
     def AutoTurn(self,numeroturnos):
@@ -82,44 +122,14 @@ class game():
             turn = setup.Turn()
             turn.turno()
             flagResultadoTurno = turn.obterFlagResultadoTurno()
-            print("Flag:" + str(flagResultadoTurno))
             self.incrementarTurno()
             self.incrementarValorGasto(self.obterCostTurn())
-        if flagResultadoTurno == 0:
-            self.incrementarTurnoSemPremio(1)
-        elif flagResultadoTurno == 1:
-            self.definirScore(5)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 2:
-            self.definirScore(10)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 4:
-            self.definirScore(15)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 8:
-            self.definirScore(20)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 16:
-            self.definirScore(30)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 32:
-            self.definirScore(50)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 64:
-            self.definirScore(100)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 128:
-            self.definirPrize(1)
-            self.definirNumeroTurnoSemPremio(0)
-        elif flagResultadoTurno == 265:
-            self.definirCostTurn = (self.obterCostTurn * 2)
-            self.incrementarTurnoSemPremio(1)
-        else:
-            self.definirNumeroTurnoSemPremio(0)
+            self.atualizarVariaveisJogo(flagResultadoTurno)
+            self.TurnPrint(turn)
 
     def turn(self):
        
-        self.AutoTurn(2)
+        self.AutoTurn(300)
 
     def run(self):
 
